@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "Node16",
+    "target": "ES2022",
+    "moduleResolution": "Node16",
+    "esModuleInterop": true,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "types": ["node"],
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "inlineSourceMap": true,
+    "composite": true,
+    "incremental": true,
+    "lib": ["ES2022", "DOM", "ESNext.Array", "DOM.Iterable"],
+    "checkJs": true
+  },
+  "include": ["src"]
+}
