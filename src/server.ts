@@ -16,7 +16,15 @@ import { fileURLToPath } from 'node:url';
 import { Chat } from './model/Chat.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const PORT = process.env.PORT || 3000;
+const moduleBasePath = new URL(import.meta.url).href;
+
+// this is to resolve the client component imports in the server
+import { readFileSync } from 'node:fs';
+const REACT_CLIENT_MANIFEST = readFileSync(
+  join(__dirname, '..', 'dist', 'react-client-manifest.json'),
+  'utf-8',
+);
+const REACT_CLIENT_MANIFEST_MAP = JSON.parse(REACT_CLIENT_MANIFEST);
 
 const app = fastify({
   logger: {
@@ -40,26 +48,23 @@ await app
     wildcard: false,
   })
   .register(fastifyStatic, {
-    root: join(__dirname, '..', 'dist', 'client'),
+    root: join(__dirname, '..', 'dist'),
     index: false,
     wildcard: false,
     decorateReply: false,
-    prefix: '/client',
   });
 
 // this is here so the workshop app knows when the server has started
 app.head('/', (req, res) => res.status(200));
 
-const moduleBasePath = new URL(import.meta.url).href;
-
-function renderApp(_res, _result = undefined) {
+const renderApp = (_res, _result = undefined) => {
   const appContext = { chatModel: new Chat() };
   return appContextStore.run(appContext, () => {
     const root = h(App);
-    const { pipe } = renderToPipeableStream(root, moduleBasePath);
+    const { pipe } = renderToPipeableStream(root, REACT_CLIENT_MANIFEST_MAP);
     return pipe(new PassThrough());
   });
-}
+};
 
 app.get('/rsc', (req, res) => {
   res.type('text/html').send(renderApp(res));
@@ -95,7 +100,7 @@ app.get('/', function sendIndex(req, res) {
   return res.sendFile('index.html');
 });
 
-await app.listen({ port: PORT as number });
+await app.listen({ port: 3000 });
 
 closeWithGrace(async ({ signal, err }) => {
   if (err) {

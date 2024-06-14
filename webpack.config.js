@@ -2,6 +2,9 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import nodeExternals from 'webpack-node-externals';
 import NodemonPlugin from 'nodemon-webpack-plugin';
+import ReactServerWebpackPlugin from 'react-server-dom-webpack/plugin';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const browserslistTarget = '>0.3%, last 5 version and not dead';
@@ -15,7 +18,7 @@ const clientConfig = {
     index: './src/index.tsx',
   },
   output: {
-    path: resolve(__dirname, 'dist', 'client'),
+    path: resolve(__dirname, 'dist'),
     filename: '[name].js',
     publicPath: '',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
@@ -51,12 +54,18 @@ const clientConfig = {
           },
           isModule: true,
         },
-      },
+      }
     ],
   },
+  plugins: [
+    new ReactServerWebpackPlugin({
+      isServer: false,
+    }),
+  ],
 };
 
 const serverConfig = {
+  dependencies: ['client'],
   name: 'server',
   mode: 'development',
   externalsPresets: { node: true },
@@ -115,6 +124,10 @@ const serverConfig = {
           sourceMaps: true,
         },
       },
+      {
+        test: /\.client.tsx$/,
+        loader: require.resolve('./webpack-loaders/RSCNodeLoader.js'),
+      },
     ],
   },
   watchOptions: {
@@ -129,7 +142,9 @@ const serverConfig = {
         '--enable-source-maps',
         '--conditions=react-server',
       ],
-      watch: [resolve(__dirname, 'dist', 'server.js')],
+      watch: [
+        resolve(__dirname, 'dist', 'server.js'),
+      ],
       env: {
         NODE_ENV: 'development',
       },
