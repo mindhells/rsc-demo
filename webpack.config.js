@@ -1,3 +1,4 @@
+import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -130,6 +131,31 @@ const serverConfig = {
         test: /\.client.tsx$/,
         loader: require.resolve('./webpack-loaders/RSCNodeLoader.js'),
       },
+      {
+        test: /\.scss$/i,
+        use: [
+          {
+            loader: MiniCSSExtractPlugin.loader,
+          },
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              // The option importLoaders allows you to configure how many loaders before css-loader should be applied to @imported resources and CSS modules/ICSS imports.
+              // 0 => no loaders (default);
+              // 1 => sass-loader;
+              importLoaders: 1,
+              modules: {
+                namedExport: false,
+                exportLocalsConvention: 'as-is',
+                localIdentName: '[local]-[hash:base64:6]',
+              },
+            },
+          },
+          {
+            loader: require.resolve('sass-loader'),
+          },
+        ],
+      },
     ],
   },
   watchOptions: {
@@ -148,6 +174,10 @@ const serverConfig = {
       env: {
         NODE_ENV: 'development',
       },
+    }),
+    new MiniCSSExtractPlugin({
+      filename: 'public/[name].css',
+      chunkFilename: 'public/chunk-[name].css',
     }),
   ],
 };
