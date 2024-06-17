@@ -1,6 +1,6 @@
 import { Suspense, startTransition, use, type ReactNode } from 'react';
-import { createFromFetch } from 'react-server-dom-webpack/client';
 import { createRoot } from 'react-dom/client';
+import { createFromFetch } from 'react-server-dom-webpack/client';
 
 const contentPromise = createFromFetch(fetch('/rsc'));
 

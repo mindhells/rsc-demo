@@ -1,18 +1,18 @@
+import compress from '@fastify/compress';
+import multipart from '@fastify/multipart';
+import fastifyStatic from '@fastify/static';
 import closeWithGrace from 'close-with-grace';
 import fastify from 'fastify';
-import compress from '@fastify/compress';
-import fastifyStatic from '@fastify/static';
-import multipart from '@fastify/multipart';
+import { dirname, join } from 'node:path';
+import { PassThrough } from 'node:stream';
+import { fileURLToPath } from 'node:url';
 import { createElement as h } from 'react';
 import {
-  renderToPipeableStream,
   decodeReply,
+  renderToPipeableStream,
 } from 'react-server-dom-webpack/server';
 import App from './App.js';
 import { appContextStore } from './appContextStore.js';
-import { PassThrough } from 'node:stream';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { Chat } from './model/Chat.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

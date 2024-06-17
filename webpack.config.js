@@ -1,9 +1,9 @@
+import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import nodeExternals from 'webpack-node-externals';
 import NodemonPlugin from 'nodemon-webpack-plugin';
 import ReactServerWebpackPlugin from 'react-server-dom-webpack/plugin';
-import { createRequire } from 'node:module';
+import nodeExternals from 'webpack-node-externals';
 const require = createRequire(import.meta.url);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -30,6 +30,7 @@ const clientConfig = {
     },
   },
   module: {
+    exprContextCritical: false,
     rules: [
       {
         test: /\.tsx?$/,
@@ -54,7 +55,7 @@ const clientConfig = {
           },
           isModule: true,
         },
-      }
+      },
     ],
   },
   plugins: [
@@ -99,9 +100,10 @@ const serverConfig = {
     colors: true,
     modules: true,
     reasons: true,
-    errorDetails: true
+    errorDetails: true,
   },
   module: {
+    exprContextCritical: false,
     rules: [
       {
         test: /\.tsx?$/i,
@@ -142,9 +144,7 @@ const serverConfig = {
         '--enable-source-maps',
         '--conditions=react-server',
       ],
-      watch: [
-        resolve(__dirname, 'dist', 'server.js'),
-      ],
+      watch: [resolve(__dirname, 'dist', 'server.js')],
       env: {
         NODE_ENV: 'development',
       },
