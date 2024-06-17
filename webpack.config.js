@@ -57,11 +57,40 @@ const clientConfig = {
           isModule: true,
         },
       },
+      {
+        test: /\.scss$/i,
+        use: [
+          {
+            loader: MiniCSSExtractPlugin.loader,
+          },
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              // The option importLoaders allows you to configure how many loaders before css-loader should be applied to @imported resources and CSS modules/ICSS imports.
+              // 0 => no loaders (default);
+              // 1 => sass-loader;
+              importLoaders: 1,
+              modules: {
+                namedExport: false,
+                exportLocalsConvention: 'as-is',
+                localIdentName: '[local]-[hash:base64:6]',
+              },
+            },
+          },
+          {
+            loader: require.resolve('sass-loader'),
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new ReactServerWebpackPlugin({
       isServer: false,
+    }),
+    new MiniCSSExtractPlugin({
+      filename: 'public/[name].css',
+      chunkFilename: 'public/chunk-[name].css',
     }),
   ],
 };

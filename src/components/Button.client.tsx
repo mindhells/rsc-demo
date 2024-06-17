@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { flushSync } from 'react-dom';
 
+import styles from './Button.scss';
+
 const Button = () => {
   const [count, setCount] = useState(0);
 
@@ -13,7 +15,7 @@ const Button = () => {
   };
 
   return (
-    <button type="button" onClick={handleClick}>
+    <button type="button" className={styles.button} onClick={handleClick}>
       click me!{count}
     </button>
   );
