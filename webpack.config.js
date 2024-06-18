@@ -157,7 +157,7 @@ const serverConfig = {
         },
       },
       {
-        test: /\.client.tsx$/,
+        test: /\.(client|action).tsx?$/,
         loader: require.resolve('./webpack-loaders/RSCNodeLoader.js'),
       },
       {

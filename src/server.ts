@@ -3,7 +3,7 @@ import multipart from '@fastify/multipart';
 import fastifyStatic from '@fastify/static';
 import closeWithGrace from 'close-with-grace';
 import fastify from 'fastify';
-import { dirname, join } from 'node:path';
+import { dirname, join, relative } from 'node:path';
 import { PassThrough } from 'node:stream';
 import { fileURLToPath } from 'node:url';
 import { createElement as h } from 'react';
@@ -57,23 +57,27 @@ await app
 // this is here so the workshop app knows when the server has started
 app.head('/', (req, res) => res.status(200));
 
-const renderApp = (_res, _result = undefined) => {
+const renderApp = (returnValue = undefined) => {
   const appContext = { chatModel: new Chat() };
   return appContextStore.run(appContext, () => {
     const root = h(App);
-    const { pipe } = renderToPipeableStream(root, REACT_CLIENT_MANIFEST_MAP);
+    const { pipe } = renderToPipeableStream(
+      { root, returnValue },
+      REACT_CLIENT_MANIFEST_MAP,
+    );
     return pipe(new PassThrough());
   });
 };
 
 app.get('/rsc', (req, res) => {
-  res.type('text/html').send(renderApp(res));
+  res.type('text/html').send(renderApp());
 });
 
 app.post('/action', async (req, res) => {
   const serverReference = req.headers['rsc-action'] as string;
   const [filepath, name] = serverReference.split('#');
-  const action = (await import(filepath))[name];
+  const url = relative(join(__dirname, 'actions'), new URL(filepath).pathname);
+  const action = (await import(`./actions/${url}`))[name];
   // Validate that this is actually a function we intended to expose and
   // not the client trying to invoke arbitrary functions. In a real app,
   // you'd have a manifest verifying this before even importing it.
@@ -89,10 +93,13 @@ app.post('/action', async (req, res) => {
   }
   const reply = decodeReply(formData, moduleBasePath);
   const args = await reply;
-  const result = await action(...args);
 
   res.type('text/html');
-  return renderApp(res, result);
+  const appContext = { chatModel: new Chat() };
+  const returnValue = await appContextStore.run(appContext, () => {
+    return action(...args);
+  });
+  return renderApp(returnValue);
 });
 
 app.get('/', function sendIndex(req, res) {
