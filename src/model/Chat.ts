@@ -13,6 +13,7 @@ export class Chat {
       setTimeout(resolve, Math.random() * 1000 + 500),
     );
     Chat.#messages.push(answer);
+    return answer;
   }
 
   async getHistory() {
