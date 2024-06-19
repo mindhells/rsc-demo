@@ -1,9 +1,11 @@
 'use server';
 
-import { appContextStore } from '../appContextStore.js';
+import type { createGlobalContext } from '../server/createGlobalContext.js';
+import { getContext } from '../server/withContext.js';
 
 export async function sendMessage(previousState, formData) {
-  const { chatModel } = appContextStore.getStore() || {};
+  const { chatModel } =
+    getContext<ReturnType<typeof createGlobalContext>>() || {};
 
   const message = formData.get('message');
   try {
