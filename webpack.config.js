@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 import NodemonPlugin from 'nodemon-webpack-plugin';
 import ReactServerWebpackPlugin from 'react-server-dom-webpack/plugin';
 import nodeExternals from 'webpack-node-externals';
-const require = createRequire(import.meta.url);
 
+const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const browserslistTarget = '>0.3%, last 5 version and not dead';
 
@@ -84,13 +84,24 @@ const clientConfig = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: "client",
+          type: "css/mini-extract",
+          chunks: "all",
+          enforce: true,
+        },
+      },
+    },
+  },
   plugins: [
     new ReactServerWebpackPlugin({
       isServer: false,
     }),
     new MiniCSSExtractPlugin({
       filename: 'public/[name].css',
-      chunkFilename: 'public/chunk-[name].css',
     }),
   ],
 };

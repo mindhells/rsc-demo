@@ -32,13 +32,13 @@ dependencies:
     version: 11.2.1
   react:
     specifier: rc
-    version: 19.0.0-rc-f3e09d6328-20240612
+    version: 19.0.0-rc-1434af3d22-20240618
   react-dom:
     specifier: rc
-    version: 19.0.0-rc-f3e09d6328-20240612(react@19.0.0-rc-f3e09d6328-20240612)
+    version: 19.0.0-rc-1434af3d22-20240618(react@19.0.0-rc-1434af3d22-20240618)
   react-server-dom-webpack:
     specifier: rc
-    version: 19.0.0-rc-f3e09d6328-20240612(react-dom@19.0.0-rc-f3e09d6328-20240612)(react@19.0.0-rc-f3e09d6328-20240612)(webpack@5.92.0)
+    version: 19.0.0-rc-1434af3d22-20240618(react-dom@19.0.0-rc-1434af3d22-20240618)(react@19.0.0-rc-1434af3d22-20240618)(webpack@5.92.0)
 
 devDependencies:
   '@biomejs/biome':
@@ -1675,32 +1675,32 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
 
-  /react-dom@19.0.0-rc-f3e09d6328-20240612(react@19.0.0-rc-f3e09d6328-20240612):
-    resolution: {integrity: sha512-8hxyAR1JjOiJPhZm8zn6QBKJ2kF2eas/L8mkTpmd4zGoHHq3Dqk5ViciwZTWCYt3mMQgp3BhCBdeWxD9a0T6fw==}
+  /react-dom@19.0.0-rc-1434af3d22-20240618(react@19.0.0-rc-1434af3d22-20240618):
+    resolution: {integrity: sha512-RxiCltzv8qLMTnQUoDmPUwOlk6TWg76pJOhZEwqMJAw8d/V8V1ZBjmbEToqxTlNY1rU+1oADXpOhZ5jXzsAoRw==}
     peerDependencies:
-      react: 19.0.0-rc-f3e09d6328-20240612
+      react: 19.0.0-rc-1434af3d22-20240618
     dependencies:
-      react: 19.0.0-rc-f3e09d6328-20240612
-      scheduler: 0.25.0-rc-f3e09d6328-20240612
+      react: 19.0.0-rc-1434af3d22-20240618
+      scheduler: 0.25.0-rc-1434af3d22-20240618
     dev: false
 
-  /react-server-dom-webpack@19.0.0-rc-f3e09d6328-20240612(react-dom@19.0.0-rc-f3e09d6328-20240612)(react@19.0.0-rc-f3e09d6328-20240612)(webpack@5.92.0):
-    resolution: {integrity: sha512-kPO7etOPqlT8cyegzaEKlQsp2h6fK6oev2GDA4e+dU1ZPrPYfE3RtmUmK6wKjvr9kOnGfk0Ee4yIS7Du8YyOjw==}
+  /react-server-dom-webpack@19.0.0-rc-1434af3d22-20240618(react-dom@19.0.0-rc-1434af3d22-20240618)(react@19.0.0-rc-1434af3d22-20240618)(webpack@5.92.0):
+    resolution: {integrity: sha512-e59owuJZws3yKPNfxw6MMse0W7tn/fH/LSgnCraSKuFgwse6+aNs+wZEWqSfoFcCoVjeLSF5DIoBTcUalKoA1w==}
     engines: {node: '>=0.10.0'}
     peerDependencies:
-      react: 19.0.0-rc-f3e09d6328-20240612
-      react-dom: 19.0.0-rc-f3e09d6328-20240612
+      react: 19.0.0-rc-1434af3d22-20240618
+      react-dom: 19.0.0-rc-1434af3d22-20240618
       webpack: ^5.59.0
     dependencies:
       acorn-loose: 8.4.0
       neo-async: 2.6.2
-      react: 19.0.0-rc-f3e09d6328-20240612
-      react-dom: 19.0.0-rc-f3e09d6328-20240612(react@19.0.0-rc-f3e09d6328-20240612)
+      react: 19.0.0-rc-1434af3d22-20240618
+      react-dom: 19.0.0-rc-1434af3d22-20240618(react@19.0.0-rc-1434af3d22-20240618)
       webpack: 5.92.0(@swc/core@1.5.29-nightly-20240612.2)(webpack-cli@5.1.4)
     dev: false
 
-  /react@19.0.0-rc-f3e09d6328-20240612:
-    resolution: {integrity: sha512-xfqayZMfs4jAkRgMZRVfrgAVFwmW3DbidUpd3InNwxot55Fqeno27d0d6y7SR/WOFT2r7O+qKBOtJ0mNmX2VXg==}
+  /react@19.0.0-rc-1434af3d22-20240618:
+    resolution: {integrity: sha512-pKctYa+Ylav97Fz3KPlnQ9cfc88VzYnQkXoGty5arwTZwLq7bMr/k1WB+ljkpwZuECz9wmaReph87zpVYB+8SA==}
     engines: {node: '>=0.10.0'}
     dev: false
 
@@ -1852,8 +1852,8 @@ packages:
       source-map-js: 1.2.0
     dev: true
 
-  /scheduler@0.25.0-rc-f3e09d6328-20240612:
-    resolution: {integrity: sha512-/YYWVK2+PXQ1N1Sd9b/Oue1xJtQmeHvVyppEyhBIL1DRMxoEGGV3EWLh8BagWksMt5gWRq7FEBgca2m1S5lG+w==}
+  /scheduler@0.25.0-rc-1434af3d22-20240618:
+    resolution: {integrity: sha512-6SwwiFCnB4j6OwMPe+GPK0qLtZAymZ60/ANNeALwOrlIxRAvVSALR+JoExa+8T0jsrxLEIEMZnXL0a7N6yH02A==}
     dev: false
 
   /schema-utils@3.3.0:
