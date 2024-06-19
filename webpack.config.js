@@ -1,9 +1,11 @@
-import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
 import NodemonPlugin from 'nodemon-webpack-plugin';
 import ReactServerWebpackPlugin from 'react-server-dom-webpack/plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 
 const require = createRequire(import.meta.url);
@@ -19,9 +21,9 @@ const clientConfig = {
     bootstrap: './src/client/bootstrap.tsx',
   },
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'dist', 'public'),
     filename: '[name].js',
-    publicPath: '',
+    publicPath: 'public/',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
   },
   resolve: {
@@ -101,7 +103,10 @@ const clientConfig = {
       isServer: false,
     }),
     new MiniCSSExtractPlugin({
-      filename: 'public/[name].css',
+      filename: '[name].css',
+    }),
+    new CopyPlugin({
+      patterns: ['public'],
     }),
   ],
 };
