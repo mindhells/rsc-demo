@@ -2,6 +2,25 @@
 
 This project is a simple chat application implemented using RSC
 
+## Launching the project
+
+Make sure you have the latest node LTS version (>=20.14) and install the project deps. You can use `nvm` as in this example:
+
+```sh
+nvm install 20.14.0
+nvm alias default 20.14.0
+corepack enable pnpm
+pnpm i
+```
+
+Node CorePack might ask you to update your pnpm version, just go ahead and do it. Then you can just launch the development environment with:
+
+```sh
+pnpm watch
+```
+
+When the server is ready you'll see a link (e.g. <http://127.0.0.1:3000>)
+
 ## Stack
 
 - NodeJS (server)

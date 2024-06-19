@@ -3,6 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">= 20.12.2"
+  },
   "scripts": {
     "build": "rimraf dist && webpack --config ./webpack.config.js",
     "start": "node --conditions=react-server --enable-source-maps ./dist/server.js",
