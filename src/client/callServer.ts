@@ -1,4 +1,5 @@
 import { encodeReply } from 'react-server-dom-webpack/client';
+
 import { updateContent } from './contentUpdater.js';
 import { updateContentPromise } from './contentPromise.js';
 

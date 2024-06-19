@@ -1,5 +1,6 @@
 import { Suspense, startTransition } from 'react';
 import { createRoot } from 'react-dom/client';
+
 import Root from './Root.js';
 import { updateContentPromise } from './contentPromise.js';
 import { callServer } from './callServer.js';
