@@ -3,13 +3,7 @@ import multipart from '@fastify/multipart';
 import fastifyStatic from '@fastify/static';
 import closeWithGrace from 'close-with-grace';
 import fastify from 'fastify';
-import { PassThrough } from 'node:stream';
-import { createElement as h } from 'react';
-import {
-  decodeReply,
-  renderToPipeableStream,
-} from 'react-server-dom-webpack/server';
-import App from './components/App.js';
+import { decodeReply } from 'react-server-dom-webpack/server';
 import {
   getFullPath,
   getRelativeSourcePath,
@@ -17,10 +11,13 @@ import {
 } from './server/fileManager.js';
 import { setGlobalContext, withContext } from './server/withContext.js';
 import { createGlobalContext } from './server/createGlobalContext.js';
+import { createRenderApp } from './server/createRenderApp.js';
 
 const REACT_CLIENT_MANIFEST_MAP = readJSONFile(
   'public/react-client-manifest.json',
 );
+setGlobalContext(createGlobalContext());
+const renderApp = createRenderApp(REACT_CLIENT_MANIFEST_MAP);
 
 const app = fastify({
   logger: {
@@ -45,21 +42,8 @@ await app
     prefix: '/public/',
   });
 
-setGlobalContext(createGlobalContext());
-
 // this is here so the workshop app knows when the server has started
 app.head('/', (req, res) => res.status(200));
-
-const renderApp = (returnValue = undefined) => {
-  return withContext(() => {
-    const root = h(App);
-    const { pipe } = renderToPipeableStream(
-      { root, returnValue },
-      REACT_CLIENT_MANIFEST_MAP,
-    );
-    return pipe(new PassThrough());
-  });
-};
 
 app.get('/rsc', (req, res) => {
   res.type('text/html').send(renderApp());
