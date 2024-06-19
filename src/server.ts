@@ -3,15 +3,12 @@ import multipart from '@fastify/multipart';
 import fastifyStatic from '@fastify/static';
 import closeWithGrace from 'close-with-grace';
 import fastify from 'fastify';
-import { decodeReply } from 'react-server-dom-webpack/server';
-import {
-  getFullPath,
-  getRelativeSourcePath,
-  readJSONFile,
-} from './server/fileManager.js';
-import { setGlobalContext, withContext } from './server/withContext.js';
+
+import { getFullPath, readJSONFile } from './server/fileManager.js';
+import { setGlobalContext } from './server/withContext.js';
 import { createGlobalContext } from './server/createGlobalContext.js';
 import { createRenderApp } from './server/createRenderApp.js';
+import { runServerAction } from './server/runServerAction.js';
 
 const REACT_CLIENT_MANIFEST_MAP = readJSONFile(
   'public/react-client-manifest.json',
@@ -51,30 +48,11 @@ app.get('/rsc', (req, res) => {
 
 app.post('/action', async (req, res) => {
   const serverReference = req.headers['rsc-action'] as string;
-  const [filepath, name] = serverReference.split('#');
-  // const url = relative(join(__dirname, 'actions'), new URL(filepath).pathname);
-  const url = getRelativeSourcePath(filepath, 'actions');
-  const action = (await import(`./actions/${url}`))[name];
-  // Validate that this is actually a function we intended to expose and
-  // not the client trying to invoke arbitrary functions. In a real app,
-  // you'd have a manifest verifying this before even importing it.
-  if (action.$$typeof !== Symbol.for('react.server.reference')) {
-    throw new Error('Invalid action');
-  }
-
-  // Convert the parsed body to a FormData object, as that's what decodeReply
-  // requires.
-  const formData = new FormData();
-  for (const [key, value] of Object.entries(req.body as object)) {
-    formData.append(key, value.value);
-  }
-  const reply = decodeReply(formData);
-  const args = await reply;
-
+  const returnValue = await runServerAction(
+    serverReference,
+    req.body as object,
+  );
   res.type('text/html');
-  const returnValue = await withContext(() => {
-    return action(...args);
-  });
   return renderApp(returnValue);
 });
 
@@ -91,6 +69,5 @@ closeWithGrace(async ({ signal, err }) => {
   } else if (signal) {
     app.log.info({ signal }, 'Shutting down server due to signal');
   }
-
   await app.close();
 });
