@@ -21,6 +21,16 @@ pnpm watch
 
 When the server is ready you'll see a link (e.g. <http://127.0.0.1:3000>)
 
+## Code organization
+
+- src
+  - actions:  server actions
+  - components:
+    - *.client.tsx: client components
+  - client: client boot scripts
+  - model: chat data source for the demo
+  - index.tsx: client bootstrap script
+
 ## Stack
 
 - NodeJS (server)

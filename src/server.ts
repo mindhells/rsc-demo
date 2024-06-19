@@ -11,7 +11,7 @@ import {
   decodeReply,
   renderToPipeableStream,
 } from 'react-server-dom-webpack/server';
-import App from './App.js';
+import App from './components/App.js';
 import { appContextStore } from './appContextStore.js';
 import { Chat } from './model/Chat.js';
 

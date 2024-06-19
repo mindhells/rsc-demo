@@ -1,5 +1,5 @@
-import Button from './components/Button.client.js';
-import Chat from './components/Chat.js';
+import Button from './Button.client.js';
+import Chat from './Chat.js';
 
 import styles from './App.scss';
 

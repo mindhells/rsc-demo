@@ -16,7 +16,7 @@ const clientConfig = {
   target: 'web',
   devtool: 'inline-source-map',
   entry: {
-    index: './src/index.tsx',
+    bootstrap: './src/client/bootstrap.tsx',
   },
   output: {
     path: resolve(__dirname, 'dist'),
