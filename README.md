@@ -1,29 +1,37 @@
-# Rsbuild Project
+# RSC (React Server Components) demo
 
-## Setup
+This project is a simple chat application implemented using RSC
 
-Install the dependencies:
+## Stack
 
-```bash
-pnpm install
-```
+- NodeJS (server)
+- Typescript
+- Fastify
+- Sass
 
-## Get Started
+## Devtools
 
-Start the dev server:
+- Webpack
+- SWC loader
+- Biome
+- Nodemon
 
-```bash
-pnpm dev
-```
+## Features
 
-Build the app for production:
+- ✅ Server components
+- ✅ Server components context with `AsyncLocalStorage`
+- ✅ Client components
+- ✅ Server actions (with revalidation)
+- ❌ Error boundaries
+- ❌ Initial SSR rendering (needs to be done in a separate process without `react-server` condition)
+- ❌ Client routing
 
-```bash
-pnpm build
-```
+## External references
 
-Preview the production build locally:
-
-```bash
-pnpm preview
-```
+- [Epic web workshop about RSC](https://react-server-components.epicweb.dev/)
+- [Epic web demo project](https://github.com/epicweb-dev/react-server-components)
+- [Alex demo project](https://github.com/sviridoff/rsc-webpack-swc-fastify-demo/tree/main)
+- [RSC without a framework article](https://timtech.blog/posts/react-server-components-rsc-no-framework/)
+- [Ben Holmes demo project](https://github.com/bholmesdev/simple-rsc)
+- [Minimal React Server Components Bundler & Library](https://github.com/unstubbable/mfng)
+- [Chechengyi demo project](https://github.com/Chechengyi/rsc-demo)
