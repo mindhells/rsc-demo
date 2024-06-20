@@ -20,6 +20,7 @@ function ChatForm({ action }: { action: typeof sendMessage }) {
           className={styles[`${COMPONENT_NAME}__input`]}
           type="text"
           name="message"
+          autoComplete="off"
           required
         />
         <SendButton disabled={isPending} />
