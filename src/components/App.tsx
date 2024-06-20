@@ -1,17 +1,12 @@
-import Button from './Button.client.js';
-import Chat from './Chat.js';
+import Chat from './chat/Chat.js';
+import { Home } from './home/Home.js';
 
-import styles from './App.scss';
-
-const App = () => {
+function App() {
   return (
-    <main className={styles.app}>
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
+    <Home>
       <Chat />
-      <Button />
-    </main>
+    </Home>
   );
-};
+}
 
 export default App;
