@@ -8,10 +8,14 @@
     flex-direction: row;
     text-align: start;
   }
-  
+
   &--user {
     flex-direction: row-reverse;
     text-align: end;
+  }
+
+  &--pending {
+    opacity: 0.5;
   }
 
   &__avatar,
@@ -20,11 +24,11 @@
     flex-direction: column;
     justify-content: end;
   }
-  
+
   &__avatar {
     flex-shrink: 0;
   }
-  
+
   &__time {
     display: block;
     margin-top: var(--spacing-2);

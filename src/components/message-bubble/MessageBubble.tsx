@@ -1,11 +1,13 @@
-import type { Message } from '../../model/Message.js';
+import type { MessagePayload } from '../../model/Message.js';
 import { buildClassName } from '../../utils/buildClassName.js';
 
 import styles from './MessageBubble.scss';
 
 const COMPONENT_NAME = 'message-bubble';
 
-export function MessageBubble({ message }: Readonly<{ message: Message }>) {
+export function MessageBubble({
+  message,
+}: Readonly<{ message: MessagePayload }>) {
   return (
     <div
       className={buildClassName(
