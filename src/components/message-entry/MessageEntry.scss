@@ -6,15 +6,19 @@
   &:first-child {
     margin-top: 0;
   }
-  
+
   &--assistant {
     flex-direction: row;
     text-align: start;
   }
-  
+
   &--user {
     flex-direction: row-reverse;
     text-align: end;
+  }
+
+  &--pending {
+    opacity: 0.5;
   }
 
   &__avatar,
@@ -24,12 +28,12 @@
     justify-content: end;
     min-width: 0;
   }
-  
+
   &__avatar {
     flex-shrink: 0;
     margin-bottom: 16px;
   }
-  
+
   &__time {
     margin-top: 4px;
     font-size: 10px;

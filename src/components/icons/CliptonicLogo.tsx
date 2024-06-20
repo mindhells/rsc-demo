@@ -9,6 +9,7 @@ export function CliptonicLogo({ className }: CliptonicLogoProps) {
       viewBox="0 0 132 141"
       className={className}
     >
+      <title>Cliptonic</title>
       <desc>Softonic</desc>
       <path
         d="M39.757 105.959 4.89 71.379a16.46 16.46 0 0 1 0-23.415L48.36 4.849c6.518-6.465 17.09-6.465 23.609 0l34.867 34.58-67.08 66.53Z"

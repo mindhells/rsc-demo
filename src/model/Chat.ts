@@ -5,16 +5,18 @@ export class Chat {
   static #messages: Message[] = [Message.assistant('Welcome to the chat!')];
 
   async ask(question: string) {
-    Chat.#messages.push(Message.user(question));
+    const questionMessage = Message.user(question);
+    Chat.#messages.push(questionMessage);
     const answer = faker.lorem.sentence(question.split(' ').length);
+    const answerMessage = Message.assistant(answer);
+    Chat.#messages.push(answerMessage);
     await randomIdle();
-    Chat.#messages.push(Message.assistant(answer));
-    return answer;
+    return [questionMessage, answerMessage];
   }
 
   async getHistory() {
     await randomIdle();
-    return Chat.#messages;
+    return Chat.#messages.map((message) => message.toJSON());
   }
 }
 
