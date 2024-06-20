@@ -5,9 +5,8 @@ export interface CliptonicLogoProps {
 export function CliptonicLogo({ className }: CliptonicLogoProps) {
   return (
     <svg
-      version="1.1"
-      viewBox="0 0 132 141"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 132 141"
       className={className}
     >
       <desc>Softonic</desc>

@@ -6,14 +6,16 @@ import ChatForm from './ChatForm.client.js';
 
 import styles from './Chat.scss';
 
+const COMPONENT_NAME = 'chat';
+
 async function Chat() {
   const { chatModel } =
     getContext<ReturnType<typeof createGlobalContext>>() || {};
   const messages = await chatModel?.getHistory();
 
   return (
-    <div className={styles.chat}>
-      <ul className={styles['chat--history']}>
+    <div className={styles[COMPONENT_NAME]}>
+      <ul className={styles[`${COMPONENT_NAME}__list`]}>
         {messages?.map((message) => (
           <MessageEntry
             key={`${message.timestamp}${message.sender}`}

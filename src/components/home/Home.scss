@@ -11,16 +11,16 @@
   --timing-function: cubic-bezier(0.57, 0.21, 0.69, 1.25);
 }
 
-.home--scaffold {
+.home {
   background-color: var(--background-color-dark);
   height: 100vh;
   display: flex;
   flex-direction: column;
-}
 
-.home--heading {
-  color: #fff;
-  font-weight: 400;
-  text-align: center;
-  margin-top: 48px;
+  &__heading {
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 48px;
+  }
 }

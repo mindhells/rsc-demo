@@ -6,21 +6,23 @@ import { MessageBubble } from '../message-bubble/MessageBubble.js';
 
 import styles from './MessageEntry.scss';
 
+const COMPONENT_NAME = 'message-entry';
+
 export function MessageEntry({ message }: Readonly<{ message: Message }>) {
   return (
     <li
       key={`${message.timestamp}${message.sender}`}
       className={buildClassName(
-        styles['message-entry'],
-        styles[`message-entry__${message.sender}`],
+        styles[COMPONENT_NAME],
+        styles[`${COMPONENT_NAME}--${message.sender}`],
       )}
     >
-      <div className={styles['message-entry--avatar']}>
+      <div className={styles[`${COMPONENT_NAME}__avatar`]}>
         {message.sender === 'assistant' && <Avatar icon={<CliptonicLogo />} />}
       </div>
-      <div className={styles['message-entry--bubble']}>
+      <div className={styles[`${COMPONENT_NAME}__bubble`]}>
         <MessageBubble message={message} />
-        <p className={styles['message-entry--time']}>
+        <p className={styles[`${COMPONENT_NAME}__time`]}>
           <time dateTime={message.timestamp.toISOString()}>
             {message.timestamp.toLocaleTimeString('es-ES', {
               hour: '2-digit',

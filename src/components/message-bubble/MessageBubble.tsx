@@ -3,12 +3,14 @@ import { buildClassName } from '../../utils/buildClassName.js';
 
 import styles from './MessageBubble.scss';
 
+const COMPONENT_NAME = 'message-bubble';
+
 export function MessageBubble({ message }: Readonly<{ message: Message }>) {
   return (
     <div
       className={buildClassName(
-        styles['message-bubble'],
-        styles[`message-bubble__${message.sender}`],
+        styles[COMPONENT_NAME],
+        styles[`${COMPONENT_NAME}--${message.sender}`],
       )}
     >
       <p>{message.text}</p>
