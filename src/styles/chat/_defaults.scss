@@ -1,0 +1,88 @@
+// TODO: translate CSS Custom Properties below to Sass variables in Wasapi
+:root {
+  // to _borders.scss
+  --border-radius: 32px;
+  --border-radius-circle: 50%;
+
+  // to _colors.scss
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-default-dark: #141415;
+  --color-default-light: #616161;
+  --color-default-xlight: #bdbdbd;
+
+  --color-primary-dark: #004cd9;
+  --color-primary: #006adc;
+
+  --color-secondary-dark: #00805e;
+  --color-secondary: #009e61;
+
+  --color-text: #3b3d40;
+
+  --color-alert: #b71c1c;
+
+  // to _fonts.scss
+  --font-size-body-default: 1rem;
+
+  --font-family-body: 'Inter', 'Arial Fallback', Arial, sans-serif;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+
+  --font-size-body-9: 1.75rem; // 28px
+  --font-size-body-3: 0.875rem; // 14px
+  --font-size-body-0: 0.6875rem; // 11px
+
+  --line-height-base: 1.35;
+
+  // to _spacings.scss
+  --spacing-2: 4px;
+  --spacing-3: 8px;
+  --spacing-4: 12px;
+  --spacing-5: 16px;
+  --spacing-7: 24px;
+  --spacing-14: 64px;
+  --spacing-16: 80px;
+
+  // to _transitions.scss
+  --transition-background-color: background-color 0.25s ease;
+
+  // to _theme.scss
+  --chat-width: 480px;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-shadow: rgba(0, 0, 0, .1) 0 0 1px;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-text);
+  font-size: var(--font-size-body-default);
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-base);
+}
+
+button,
+input {
+  font-family: var(--font-family-body);
+}
+
+strong {
+  font-weight: var(--font-weight-medium) !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

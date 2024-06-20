@@ -15,7 +15,6 @@ function ChatForm({ action }: { action: typeof sendMessage }) {
   return (
     <div className={styles[COMPONENT_NAME]}>
       <form action={formAction} className={styles[`${COMPONENT_NAME}__form`]}>
-        <CliptonicLogo />
         <input
           className={styles[`${COMPONENT_NAME}__input`]}
           type="text"

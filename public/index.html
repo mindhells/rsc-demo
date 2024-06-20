@@ -1,56 +1,63 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/x-icon" href="/public/favicon.ico">
-		<title>RSC demo</title>
-		<style>
-			@font-face {
-				font-family: 'Proxima Nova';
-				font-weight: 400;
-				font-style: normal;
-				font-display: swap;
-				src: url(./public/fonts/proxima-nova/regular.woff2) format("woff2")
-			}
-			@font-face {
-				font-family: 'Proxima Nova';
-				font-weight: 700;
-				font-style: normal;
-				font-display: swap;
-				src: url(./public/fonts/proxima-nova/bold.woff2) format("woff2")
-			}
-			@font-face {
-				font-family: 'Proxima Nova';
-				font-weight: 800;
-				font-style: normal;
-				font-display: swap;
-				src: url(./public/fonts/proxima-nova/extrabold.woff2) format("woff2")
-			}
-			@font-face {
-				font-family: 'Arial Fallback';
-				src: local(Arial);
-				size-adjust: 98%;
-				ascent-override: 91%;
-				descent-override: 28%;
-				line-gap-override: 3%;
-			}
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-			body,
-			input,
-			button {
-				font-family: 'Proxima Nova', sans-serif;
-			}
-		</style>
-		<link rel="stylesheet" href="/public/client.css">
-		<link rel="stylesheet" href="/public/server.css">
-	</head>
-	<body>
-		<div id="root"></div>
-		<script type="module" src="/public/bootstrap.js"></script>
-	</body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+  <title>RSC demo</title>
+  <style>
+    @font-face {
+      font-weight: 400;
+      font-family: "Inter";
+      font-style: normal;
+      font-display: swap;
+      src: url("./public/fonts/inter/inter-regular.eot");
+      src:
+        local("Inter Regular"),
+        local("Inter-Regular"),
+        url("./public/fonts/inter/inter-regular.woff2") format("woff2"),
+        url("./public/fonts/inter/inter-regular.woff") format("woff"),
+        url("./public/fonts/inter/inter-regular.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-weight: 600;
+      font-family: "Inter";
+      font-style: normal;
+      font-display: swap;
+      src: url("./public/fonts/inter/inter-semibold.eot");
+      src:
+        local("Inter SemiBold"),
+        local("Inter-SemiBold"),
+        url("./public/fonts/inter/inter-semibold.woff2") format("woff2"),
+        url("./public/fonts/inter/inter-semibold.woff") format("woff"),
+        url("./public/fonts/inter/inter-semibold.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "Arial Fallback";
+      font-weight: 400;
+      src: local(Arial);
+      size-adjust: 107.4%;
+      descent-override: 19%;
+    }
+
+    @font-face {
+      font-family: "Arial Fallback";
+      font-weight: 600;
+      src: local(Arial Bold);
+      size-adjust: 107.7%;
+      descent-override: 19%;
+    }
+  </style>
+  <link rel="stylesheet" href="/public/client.css">
+  <link rel="stylesheet" href="/public/server.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/public/bootstrap.js"></script>
+</body>
+
 </html>

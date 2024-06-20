@@ -1,44 +1,31 @@
+$chat-form-margin: 16px;
+
 .chat-form {
   &__form {
-    width: calc(100% - 32px);
-    max-width: calc(var(--chat-width) - 32px);
-    height: 56px;
-    position: absolute;
-    bottom: 0px;
-    margin: 16px;
     display: flex;
     align-items: center;
-
-    > svg {
-      position: absolute;
-      width: 36px;
-      left: 18px;
-    }
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - ($chat-form-margin * 2));
+    max-width: calc(var(--chat-width) - ($chat-form-margin * 2));
+    height: 56px;
+    margin: $chat-form-margin;
   }
   
   &__input {
-    flex: 1;
+    flex: 1 1 0;
     height: 100%;
-    border: 2px solid #fff;
-    background-color: transparent;
-    width: 0;
-    font-size: 15px;
-  
-    box-shadow: 0px 0px 14px 3px #0000001f;
+    padding-inline-start: var(--spacing-5);
+    padding-inline-end: var(--spacing-14);
+    border: none;
     border-radius: 28px;
-    align-items: center;
-    padding-inline-start: 64px;
-    padding-inline-end: 56px;
-    caret-color: var(--primary-color);
-    background-color: #fff;
-  
-    transition-duration: 200ms;
-    transition-timing-function: var(--timing-functions);
-    transition-property: border;
+    font-size: var(--font-size-body-3);
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, .15);
+    caret-color: var(--color-primary);
+    background-color: var(--color-white);
 
     &:focus {
-      outline: none;
-      border-color: var(--primary-color);
+      outline: 2px solid var(--color-primary);
     }
   }
 }
