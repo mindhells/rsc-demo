@@ -2,7 +2,6 @@
 
 import { useTransition } from 'react';
 import type { sendMessage } from '../../actions/sendMessage.action.js';
-import { CliptonicLogo } from '../icons/CliptonicLogo.js';
 import { SendButton } from '../send-button/SendButton.js';
 import type { MessagePayload } from '../../model/Message.js';
 
@@ -42,13 +41,13 @@ function ChatForm({
   return (
     <div className={styles[COMPONENT_NAME]}>
       <form action={submitAction} className={styles[`${COMPONENT_NAME}__form`]}>
-        <CliptonicLogo />
         <input
           className={styles[`${COMPONENT_NAME}__input`]}
           type="text"
           name="message"
           autoComplete="off"
           required
+          placeholder="How to get rid of red eyes in photos?"
         />
         <SendButton disabled={isPending} />
       </form>

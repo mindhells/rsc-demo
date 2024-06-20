@@ -1,26 +1,22 @@
-:root {
-  --primary-color: #1529d7;
-  --primary-color-dark: #0f1d97;
-  --secondary-color: #2ad3b4;
-  --tertiary-color: #d13aad;
-  --tertiary-color-dark: #ba2b98;
-
-  --background-color-dark: #1a0c2c;
-  --gray-color: #424d59;
-
-  --timing-function: cubic-bezier(0.57, 0.21, 0.69, 1.25);
-}
+// TODO: move these forwards to `chatStyles.ts` in Wasapi
+@forward '../../styles/base/minireset';
+@forward '../../styles/chat/defaults';
+// @forward '../../styles/chat/states';
 
 .home {
-  background-color: var(--background-color-dark);
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: var(--spacing-7);
+  background-color: var(--color-default-dark);
 
   &__heading {
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 48px;
+    margin-bottom: var(--spacing-7);
+    font-size: var(--font-size-body-9);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-white);
   }
 }

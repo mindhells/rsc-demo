@@ -1,20 +1,19 @@
 .message-bubble {
-  padding: 12px 24px;
-  color: #fff;
-  font-size: 15px;
-  line-height: 18.9px;
+  padding: var(--spacing-4) var(--spacing-7);
+  font-size: var(--font-size-body-3);
+  color: var(--color-white);
 
   &--assistant {
-    background-color: var(--primary-color);
-    border-radius: 30px 30px 30px 0px;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius) var(--border-radius) var(--border-radius) 0;
   }
   
   &--user {
-    background: var(--secondary-color);
-    border-radius: 30px 30px 0px 30px;
+    background: var(--color-default-light);
+    border-radius: var(--border-radius) var(--border-radius) 0 var(--border-radius);
   }
   
   &--error {
-    background-color: #e43555;
+    background-color: var(--color-alert);
   }
 }
