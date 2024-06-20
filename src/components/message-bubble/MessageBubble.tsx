@@ -15,7 +15,11 @@ export function MessageBubble({
         styles[`${COMPONENT_NAME}--${message.sender}`],
       )}
     >
-      <p>{message.text}</p>
+      {message.pending && message.sender === 'assistant' ? (
+        <p>Spinner here</p>
+      ) : (
+        <p>{message.text}</p>
+      )}
     </div>
   );
 }

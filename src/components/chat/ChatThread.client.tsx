@@ -36,13 +36,21 @@ function ChatThread({
           <MessageEntry
             key={`${message.timestamp}${message.sender}`}
             message={message}
-            isPending={message.pending}
           />
         ))}
       </ul>
       <ChatForm
         action={action}
-        questionSent={(message) => addOptimisticMessage(message)}
+        questionSent={(message) => {
+          addOptimisticMessage(message);
+          setTimeout(() => {
+            addOptimisticMessage({
+              sender: 'assistant',
+              text: 'Getting your answer',
+              pending: true,
+            });
+          }, 500);
+        }}
         answerReceived={(newMessages) =>
           setMessages(messages.concat(newMessages))
         }

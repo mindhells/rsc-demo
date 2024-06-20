@@ -48,6 +48,7 @@ function ChatForm({
           autoComplete="off"
           required
           placeholder="How to get rid of red eyes in photos?"
+          disabled={isPending}
         />
         <SendButton disabled={isPending} />
       </form>

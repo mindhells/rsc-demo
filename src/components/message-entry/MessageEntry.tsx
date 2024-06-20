@@ -10,15 +10,14 @@ const COMPONENT_NAME = 'message-entry';
 
 export function MessageEntry({
   message,
-  isPending,
-}: Readonly<{ message: MessagePayload; isPending?: boolean }>) {
+}: Readonly<{ message: MessagePayload }>) {
   return (
     <li
       key={`${message.timestamp ?? 'new'}${message.sender}`}
       className={buildClassName(
         styles[COMPONENT_NAME],
         styles[`${COMPONENT_NAME}--${message.sender}`],
-        isPending && styles[`${COMPONENT_NAME}--pending`],
+        message.pending && styles[`${COMPONENT_NAME}--pending`],
       )}
     >
       <div className={styles[`${COMPONENT_NAME}__avatar`]}>
