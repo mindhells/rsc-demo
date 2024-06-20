@@ -5,6 +5,47 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/x-icon" href="/public/favicon.ico">
 		<title>RSC demo</title>
+		<style>
+			@font-face {
+				font-family: 'Proxima Nova';
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+				src: url(./public/fonts/proxima-nova/regular.woff2) format("woff2")
+			}
+			@font-face {
+				font-family: 'Proxima Nova';
+				font-weight: 700;
+				font-style: normal;
+				font-display: swap;
+				src: url(./public/fonts/proxima-nova/bold.woff2) format("woff2")
+			}
+			@font-face {
+				font-family: 'Proxima Nova';
+				font-weight: 800;
+				font-style: normal;
+				font-display: swap;
+				src: url(./public/fonts/proxima-nova/extrabold.woff2) format("woff2")
+			}
+			@font-face {
+				font-family: 'Arial Fallback';
+				src: local(Arial);
+				size-adjust: 98%;
+				ascent-override: 91%;
+				descent-override: 28%;
+				line-gap-override: 3%;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body,
+			input,
+			button {
+				font-family: 'Proxima Nova', sans-serif;
+			}
+		</style>
 		<link rel="stylesheet" href="/public/client.css">
 		<link rel="stylesheet" href="/public/server.css">
 	</head>
