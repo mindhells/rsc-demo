@@ -31,13 +31,17 @@ function ChatThread({
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    if (listRef?.current) {
-      listRef.current.addEventListener('DOMNodeInserted', (event) => {
-        listRef.current?.scroll({
-          top: listRef.current.scrollHeight,
-          behavior: 'smooth',
-        });
+    function scrollToBottom() {
+      listRef.current?.scroll({
+        top: listRef.current.scrollHeight,
+        behavior: 'smooth',
       });
+    }
+    if (listRef?.current) {
+      scrollToBottom();
+      const observer = new MutationObserver(scrollToBottom);
+      observer.observe(listRef.current, { childList: true });
+      return () => observer.disconnect();
     }
   }, []);
 
