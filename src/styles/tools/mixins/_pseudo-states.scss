@@ -1,0 +1,4 @@
+@mixin focus-state {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -1px;
+}

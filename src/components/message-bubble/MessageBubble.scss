@@ -7,16 +7,17 @@
   color: var(--color-white);
 
   &--assistant {
-    background-color: var(--color-primary);
     border-radius: var(--border-radius) var(--border-radius) var(--border-radius) 0;
+    background-color: var(--color-primary);
   }
   
   &--user {
-    background: var(--color-default-light);
     border-radius: var(--border-radius) var(--border-radius) 0 var(--border-radius);
+    background-color: var(--color-default-light);
   }
   
   &--error {
+    border-radius: var(--border-radius);
     background-color: var(--color-alert);
   }
 }

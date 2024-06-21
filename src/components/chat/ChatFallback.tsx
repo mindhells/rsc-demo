@@ -9,7 +9,7 @@ function ChatFallback({ message }: Readonly<{ message: string }>) {
     <div className={styles[COMPONENT_NAME]}>
       <div className={styles[`${COMPONENT_NAME}__fallback`]}>
         <Spinner size='large' />
-        <span>{message}</span>
+        <p className={styles[`${COMPONENT_NAME}__message`]}>{message}</p>
       </div>
     </div>
   );
