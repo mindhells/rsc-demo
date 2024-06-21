@@ -1,6 +1,6 @@
 'use client';
 
-import { useOptimistic, useState } from 'react';
+import { useEffect, useOptimistic, useRef, useState } from 'react';
 import type { sendMessage } from '../../actions/sendMessage.action.js';
 import type { MessagePayload } from '../../model/Message.js';
 import { MessageEntry } from '../message-entry/MessageEntry.js';
@@ -28,10 +28,22 @@ function ChatThread({
       },
     ],
   );
+  const listRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (listRef?.current) {
+      listRef.current.addEventListener('DOMNodeInserted', (event) => {
+        listRef.current?.scroll({
+          top: listRef.current.scrollHeight,
+          behavior: 'smooth',
+        });
+      });
+    }
+  }, []);
 
   return (
     <>
-      <ul className={className}>
+      <ul className={className} ref={listRef}>
         {optimisticMessages.map((message) => (
           <MessageEntry
             key={`${message.timestamp}${message.sender}`}
