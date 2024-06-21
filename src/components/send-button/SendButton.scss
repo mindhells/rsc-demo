@@ -30,6 +30,7 @@ $send-button-icon-size: floor($send-button-size / 2);
   
   &__icon {
     width: $send-button-icon-size;
+    height: auto;
     line-height: 0;
   }
 }
