@@ -1,6 +1,6 @@
 'use client';
 
-import { useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import type { sendMessage } from '../../actions/sendMessage.action.js';
 import { SendButton } from '../send-button/SendButton.js';
 import type { MessagePayload } from '../../model/Message.js';
@@ -21,6 +21,7 @@ function ChatForm({
   errorReceived: (error: string) => void;
 }) {
   const [isPending, startTransition] = useTransition();
+  const [question, setQuestion] = useState('');
 
   const submitAction = async (formData) => {
     startTransition(async () => {
@@ -33,6 +34,7 @@ function ChatForm({
       if (result.status === 'error') {
         errorReceived(result.error);
       } else if (result.status === 'success') {
+        setQuestion('');
         answerReceived(result.messages);
       }
     });
@@ -49,8 +51,10 @@ function ChatForm({
           required
           placeholder="How to get rid of red eyes in photos?"
           disabled={isPending}
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
         />
-        <SendButton disabled={isPending} />
+        <SendButton disabled={isPending || !question.trim()} />
       </form>
     </div>
   );

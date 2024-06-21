@@ -1,4 +1,4 @@
-export type Sender = 'assistant' | 'user';
+export type Sender = 'assistant' | 'user' | 'error';
 
 export type MessagePayload = {
   sender: Sender;
@@ -21,8 +21,12 @@ export class Message {
     return new Message('assistant', text, url);
   }
 
-  static user(text: string, url?: string) {
-    return new Message('user', text, url);
+  static user(text: string) {
+    return new Message('user', text);
+  }
+
+  static error(text: string) {
+    return new Message('error', text);
   }
 
   toJSON(): MessagePayload {
