@@ -42,7 +42,6 @@ startTransition(() => {
       <Suspense fallback={<Fallback message="Connecting to Cliptonic…" />}>
         <Root />
       </Suspense>
-      ,
-    </ErrorBoundary>,
+    </ErrorBoundary>
   );
 });
