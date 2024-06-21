@@ -39,7 +39,7 @@ startTransition(() => {
   const root = createRoot(rootElement);
   root.render(
     <ErrorBoundary fallbackRender={fallbackRender}>
-      <Suspense fallback={<Fallback message="Connecting to Cliptonic" />}>
+      <Suspense fallback={<Fallback message="Connecting to Cliptonic…" />}>
         <Root />
       </Suspense>
       ,
