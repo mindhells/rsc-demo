@@ -1,5 +1,6 @@
 import type { MessagePayload } from '../../model/Message.js';
 import { buildClassName } from '../../utils/buildClassName.js';
+import Spinner from '../spinner/Spinner.js';
 
 import styles from './MessageBubble.scss';
 
@@ -16,7 +17,10 @@ export function MessageBubble({
       )}
     >
       {message.pending && message.sender === 'assistant' ? (
-        <p>Spinner here</p>
+        <>
+          <Spinner variant='light' />
+          Thinking…
+        </>
       ) : (
         <p>{message.text}</p>
       )}

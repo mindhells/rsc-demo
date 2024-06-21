@@ -1,0 +1,35 @@
+$spinner-size: 16px;
+$spinner-size-large: 40px;
+
+.spinner {
+  display: block;
+  width: $spinner-size;
+  height: $spinner-size;
+  border-radius: var(--border-radius-circle);
+  box-shadow: 2px 1px 0 var(--color-primary-dark);
+  animation: spin .7s linear infinite;
+
+  @keyframes spin {
+    100% {
+      box-shadow: 2px 1px 0 var(--color-primary-dark);
+      transform: rotate(360deg);
+    }
+  }
+
+  &--large {
+    width: $spinner-size-large;
+    height: $spinner-size-large;
+  }
+
+  &--light {
+    box-shadow: 2px 1px 0 var(--color-white);
+    animation: spinLight .7s linear infinite;
+  }
+
+  @keyframes spinLight {
+    100% {
+      box-shadow: 2px 1px 0 var(--color-white);
+      transform: rotate(360deg);
+    }
+  }
+}
