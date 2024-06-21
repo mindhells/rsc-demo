@@ -23,6 +23,7 @@
     "pino-pretty": "^11.2.1",
     "react": "rc",
     "react-dom": "rc",
+    "react-error-boundary": "^4.0.13",
     "react-server-dom-webpack": "rc"
   },
   "devDependencies": {

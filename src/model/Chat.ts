@@ -8,7 +8,8 @@ export class Chat {
     const questionMessage = Message.user(question);
     Chat.#messages.push(questionMessage);
     const answer = faker.lorem.sentence(question.split(' ').length);
-    const answerMessage = Message.assistant(answer);
+    const answerMessage =
+      question === 'error' ? Message.error(answer) : Message.assistant(answer);
     Chat.#messages.push(answerMessage);
     await randomIdle();
     return [questionMessage, answerMessage];
