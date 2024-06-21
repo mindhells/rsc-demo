@@ -5,11 +5,9 @@ $chat-form-margin: 16px;
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 0;
+    bottom: $chat-form-margin;
     width: calc(100% - ($chat-form-margin * 2));
-    max-width: calc(var(--chat-width) - ($chat-form-margin * 2));
     height: 56px;
-    margin: $chat-form-margin;
   }
   
   &__input {
@@ -17,7 +15,7 @@ $chat-form-margin: 16px;
     height: 100%;
     padding-inline-start: var(--spacing-5);
     padding-inline-end: var(--spacing-14);
-    border: none;
+    border: 1px solid var(--color-border);
     border-radius: 28px;
     font-size: var(--font-size-body-3);
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, .15);
@@ -25,7 +23,7 @@ $chat-form-margin: 16px;
     background-color: var(--color-white);
 
     &:focus {
-      outline: 2px solid var(--color-primary);
+      @include focus-state;
     }
   }
 }

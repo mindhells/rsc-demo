@@ -4,13 +4,13 @@
   height: 688px;
   max-width: var(--chat-width);
   margin-inline: auto;
+  padding: var(--spacing-5) var(--spacing-5) 88px;
   border-radius: var(--border-radius);
   background-color: var(--color-white);
   overflow: hidden;
 
   &__list {
-    padding: var(--spacing-5) var(--spacing-5) var(--spacing-16);
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
   }
 
@@ -22,5 +22,11 @@
     gap: var(--spacing-5);
     width: 100%;
     height: 100%;
+  }
+  
+  &__message {
+    max-width: 70%;
+    min-height: 44px;
+    text-align: center;
   }
 }

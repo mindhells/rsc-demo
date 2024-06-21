@@ -3,6 +3,7 @@
 @forward '../../styles/base/minireset';
 @forward '../../styles/chat/defaults';
 // @forward '../../styles/chat/states';
+@forward '../../styles/tools/mixins/pseudo-states';
 
 .home {
   display: flex;

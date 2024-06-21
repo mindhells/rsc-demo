@@ -25,7 +25,7 @@ $send-button-icon-size: floor($send-button-size / 2);
   }
   
   &:focus {
-    outline: 2px solid var(--color-primary);
+    @include focus-state;
   }
   
   &__icon {
