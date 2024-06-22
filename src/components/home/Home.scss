@@ -1,10 +1,3 @@
-// TODO: move these forwards to `chatStyles.ts` in Wasapi, as actually they're
-// just ending in the `public/client.css` outupt file (not the server)
-@forward '../../styles/base/minireset';
-@forward '../../styles/chat/defaults';
-// @forward '../../styles/chat/states';
-@forward '../../styles/tools/mixins/pseudo-states';
-
 .home {
   display: flex;
   flex-direction: column;

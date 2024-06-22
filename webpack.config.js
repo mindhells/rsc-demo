@@ -81,6 +81,9 @@ const clientConfig = {
           },
           {
             loader: require.resolve('sass-loader'),
+            options: {
+              additionalData: `@use "${resolve(__dirname, 'src/styles/theme.scss')}" as theme;`,
+            }
           },
         ],
       },
@@ -198,6 +201,9 @@ const serverConfig = {
           },
           {
             loader: require.resolve('sass-loader'),
+            options: {
+              additionalData: `@use "${resolve(__dirname, 'src/styles/theme.scss')}" as theme;`,
+            }
           },
         ],
       },

@@ -1,5 +1,5 @@
 $send-button-size: 48px;
-$send-button-icon-size: floor($send-button-size / 2);
+$send-button-icon-size: floor(calc($send-button-size / 2));
 
 .send-button {
   display: flex;
@@ -19,15 +19,15 @@ $send-button-icon-size: floor($send-button-size / 2);
   &:hover {
     background-color: var(--color-secondary-dark);
   }
-  
+
   &:disabled {
     background-color: var(--color-default-xlight);
   }
-  
+
   &:focus {
-    @include focus-state;
+    @include theme.focus-state;
   }
-  
+
   &__icon {
     width: $send-button-icon-size;
     height: auto;

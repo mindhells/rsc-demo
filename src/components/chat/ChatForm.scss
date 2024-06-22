@@ -9,7 +9,7 @@ $chat-form-margin: 16px;
     width: calc(100% - ($chat-form-margin * 2));
     height: 56px;
   }
-  
+
   &__input {
     flex: 1 1 0;
     height: 100%;
@@ -23,7 +23,7 @@ $chat-form-margin: 16px;
     background-color: var(--color-white);
 
     &:focus {
-      @include focus-state;
+      @include theme.focus-state;
     }
   }
 }
