@@ -9,6 +9,7 @@ import { setGlobalContext } from './server/withContext.js';
 import { createGlobalContext } from './server/createGlobalContext.js';
 import { createRenderApp } from './server/createRenderApp.js';
 import { runServerAction } from './server/runServerAction.js';
+import BaseLayout from './server/BaseLayout.js';
 
 const REACT_CLIENT_MANIFEST_MAP = readJSONFile(
   'public/react-client-manifest.json',
@@ -58,7 +59,7 @@ app.post('/action', async (req, res) => {
 
 app.get('/', function sendIndex(req, res) {
   res.type('text/html');
-  return res.sendFile('index.html');
+  return res.send(BaseLayout());
 });
 
 await app.listen({ port: 3000 });

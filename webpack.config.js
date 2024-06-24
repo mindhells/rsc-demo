@@ -7,11 +7,13 @@ import NodemonPlugin from 'nodemon-webpack-plugin';
 import ReactServerWebpackPlugin from 'react-server-dom-webpack/plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const browserslistTarget = '>0.3%, last 5 version and not dead';
 const isProd = process.env.NODE_ENV === 'production';
+const sharedSeed = {};
 
 const clientConfig = {
   name: 'client',
@@ -23,7 +25,8 @@ const clientConfig = {
   },
   output: {
     path: resolve(__dirname, 'dist', 'public'),
-    filename: '[name].js',
+    filename: '[name].[contenthash:6].js',
+    chunkFilename: 'chunk-[name].[contenthash:6].js',
     publicPath: 'public/',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
   },
@@ -108,10 +111,18 @@ const clientConfig = {
       isServer: false,
     }),
     new MiniCSSExtractPlugin({
-      filename: '[name].css',
+      filename: '[name].[contenthash].css',
     }),
     new CopyPlugin({
       patterns: ['public'],
+    }),
+    new WebpackManifestPlugin({
+      fileName: resolve(__dirname, 'dist', 'clientAssetsManifest.json'),
+      // we use this to produce a single manifest file (client & templates)
+      seed: sharedSeed,
+      // We are removing `public` segment from the `path` of the stored `key`,
+      // in this way we can access to the files by `filename`.
+      removeKeyHash: /public\//gi,
     }),
   ],
 };
@@ -229,8 +240,20 @@ const serverConfig = {
       },
     }),
     new MiniCSSExtractPlugin({
-      filename: 'public/[name].css',
-      chunkFilename: 'public/chunk-[name].css',
+      filename: 'public/[name].[contenthash].css',
+      chunkFilename: 'public/chunk-[name].[contenthash].css',
+    }),
+    new WebpackManifestPlugin({
+      fileName: 'assetsManifest.json',
+      // we use this to produce a single manifest file (client & templates)
+      seed: sharedSeed,
+      // We are removing `public` segment from the `path` of the stored `key`,
+      // in this way we can access to the files by `filename`.
+      removeKeyHash: /public\//gi,
+      publicPath: '', // because it's forced in MiniCSSExtractPlugin
+      filter(file) {
+        return file.name.endsWith('.css');
+      }
     }),
   ],
 };
