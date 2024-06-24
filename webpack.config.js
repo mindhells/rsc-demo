@@ -8,6 +8,9 @@ import ReactServerWebpackPlugin from 'react-server-dom-webpack/plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
+import CSSMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import { browserslistToTargets } from 'lightningcss';
+import browserslist from 'browserslist';
 
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -95,6 +98,15 @@ const clientConfig = {
     ],
   },
   optimization: {
+    minimize: true,
+    minimizer: [
+      new CSSMinimizerPlugin({
+        minify: CSSMinimizerPlugin.lightningCssMinify,
+        minimizerOptions: {
+          targets: browserslistToTargets(browserslist(browserslistTarget)),
+        },
+      }),
+    ],
     splitChunks: {
       cacheGroups: {
         styles: {
@@ -225,6 +237,17 @@ const serverConfig = {
   watchOptions: {
     ignored: ['**/dist', '**/node_modules'],
     aggregateTimeout: 300,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CSSMinimizerPlugin({
+        minify: CSSMinimizerPlugin.lightningCssMinify,
+        minimizerOptions: {
+          targets: browserslistToTargets(browserslist(browserslistTarget)),
+        },
+      }),
+    ],
   },
   plugins: [
     new NodemonPlugin({

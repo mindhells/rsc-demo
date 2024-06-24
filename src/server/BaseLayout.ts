@@ -1,4 +1,5 @@
 import { readJSONFile } from './fileManager.js';
+import '../styles/base.scss';
 
 const REACT_CLIENT_MANIFEST_MAP = readJSONFile('assetsManifest.json');
 
