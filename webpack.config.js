@@ -11,12 +11,13 @@ import nodeExternals from 'webpack-node-externals';
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const browserslistTarget = '>0.3%, last 5 version and not dead';
+const isProd = process.env.NODE_ENV === 'production';
 
 const clientConfig = {
   name: 'client',
-  mode: 'development',
+  mode: isProd ? 'production' : 'development',
   target: 'web',
-  devtool: 'inline-source-map',
+  devtool: isProd ? false : 'inline-source-map',
   entry: {
     bootstrap: './src/client/bootstrap.tsx',
   },
@@ -57,6 +58,7 @@ const clientConfig = {
             coreJs: '3.37.1',
           },
           isModule: true,
+          sourceMaps: !isProd,
         },
       },
       {
@@ -117,7 +119,7 @@ const clientConfig = {
 const serverConfig = {
   dependencies: ['client'],
   name: 'server',
-  mode: 'development',
+  mode: isProd ? 'production' : 'development',
   externalsPresets: { node: true },
   externals: [
     nodeExternals({
@@ -126,7 +128,7 @@ const serverConfig = {
   ],
   node: false,
   target: 'node16',
-  devtool: 'inline-source-map',
+  devtool: isProd ? false : 'inline-source-map',
   entry: {
     server: './src/server.ts',
   },
@@ -172,7 +174,7 @@ const serverConfig = {
             },
           },
           isModule: true,
-          sourceMaps: true,
+          sourceMaps: !isProd,
         },
       },
       {

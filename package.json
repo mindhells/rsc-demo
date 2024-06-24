@@ -7,8 +7,8 @@
     "node": ">= 20.12.2"
   },
   "scripts": {
-    "build": "rimraf dist && webpack --config ./webpack.config.js",
-    "start": "node --conditions=react-server --enable-source-maps ./dist/server.js",
+    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.config.js",
+    "start": "NODE_ENV=production node --conditions=react-server --enable-source-maps ./dist/server.js",
     "watch": "rimraf dist && webpack --config ./webpack.config.js --watch",
     "check": "biome check --write",
     "format": "biome format --write"
