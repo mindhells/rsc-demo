@@ -30,7 +30,7 @@ const clientConfig = {
     path: resolve(__dirname, 'dist', 'public'),
     filename: '[name].[contenthash:6].js',
     chunkFilename: 'chunk-[name].[contenthash:6].js',
-    publicPath: 'public/',
+    publicPath: '/public/',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
   },
   resolve: {
@@ -273,7 +273,7 @@ const serverConfig = {
       // We are removing `public` segment from the `path` of the stored `key`,
       // in this way we can access to the files by `filename`.
       removeKeyHash: /public\//gi,
-      publicPath: '', // because it's forced in MiniCSSExtractPlugin
+      publicPath: '/', // because it's forced in MiniCSSExtractPlugin
       filter(file) {
         return file.name.endsWith('.css');
       }
