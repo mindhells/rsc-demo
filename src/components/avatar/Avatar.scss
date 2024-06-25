@@ -1,5 +1,5 @@
 $avatar-size: 48px;
-$avatar-icon-size: floor(calc($avatar-size / 2));
+$avatar-icon-size: calc($avatar-size / 2);
 
 .avatar {
   display: flex;

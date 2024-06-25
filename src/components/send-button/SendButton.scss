@@ -1,5 +1,5 @@
 $send-button-size: 48px;
-$send-button-icon-size: floor(calc($send-button-size / 2));
+$send-button-icon-size: calc($send-button-size / 2);
 
 .send-button {
   display: flex;
@@ -24,8 +24,8 @@ $send-button-icon-size: floor(calc($send-button-size / 2));
     background-color: var(--color-default-xlight);
   }
 
-  &:focus {
-    @include theme.focus-state;
+  &:focus-visible {
+    @include theme.focus-visible-state;
   }
 
   &__icon {

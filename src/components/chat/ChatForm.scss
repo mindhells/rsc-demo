@@ -25,5 +25,9 @@ $chat-form-margin: 16px;
     &:focus {
       @include theme.focus-state;
     }
+
+    &:focus-visible {
+      @include theme.focus-visible-state;
+    }
   }
 }
