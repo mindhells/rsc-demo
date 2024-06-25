@@ -10,10 +10,10 @@ import ChatThread from './ChatThread.client.js';
 const COMPONENT_NAME = 'chat';
 
 export type ChatProps = {
-  type?: 'floating';
+  position?: 'floating';
 };
 
-async function Chat({type}: ChatProps) {
+async function Chat({position}: ChatProps) {
   const { chatModel } =
     getContext<ReturnType<typeof createGlobalContext>>() || {};
   const messages = await chatModel?.getHistory();
@@ -22,7 +22,7 @@ async function Chat({type}: ChatProps) {
     <div
       className={buildClassName(
         styles[COMPONENT_NAME],
-        styles[`${COMPONENT_NAME}--${type}`],
+        styles[`${COMPONENT_NAME}--${position}`],
       )}
     >
       <ChatHeader className={styles[`${COMPONENT_NAME}__header`]} />
