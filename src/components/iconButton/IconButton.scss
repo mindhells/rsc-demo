@@ -1,0 +1,28 @@
+$icon-button-size: 32px;
+$icon-button-icon-size: calc($icon-button-size / 2);
+
+.icon-button {
+  width: $icon-button-size;
+  height: $icon-button-size;
+  border-radius: var(--border-radius-circle);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  transition: color 0.25s ease, background-color 0.25s ease;
+
+  @include theme.button-base;
+
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--color-text);
+  }
+  
+  &:focus-visible {
+    @include theme.focus-visible-state;
+  }
+
+  &__icon {
+    width: $icon-button-icon-size;
+    height: auto;
+    line-height: 0;
+  }
+}

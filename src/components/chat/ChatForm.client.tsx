@@ -41,22 +41,20 @@ function ChatForm({
   };
 
   return (
-    <div className={styles[COMPONENT_NAME]}>
-      <form action={submitAction} className={styles[`${COMPONENT_NAME}__form`]}>
-        <input
-          className={styles[`${COMPONENT_NAME}__input`]}
-          type="text"
-          name="message"
-          autoComplete="off"
-          required
-          placeholder="How to get rid of red eyes in photos?"
-          disabled={isPending}
-          value={question}
-          onChange={(event) => setQuestion(event.target.value)}
-        />
-        <SendButton disabled={isPending || !question.trim()} />
-      </form>
-    </div>
+    <form action={submitAction} className={styles[COMPONENT_NAME]}>
+      <input
+        className={styles[`${COMPONENT_NAME}__input`]}
+        type="text"
+        name="message"
+        autoComplete="off"
+        required
+        placeholder="How to get rid of red eyes in photos?"
+        disabled={isPending}
+        value={question}
+        onChange={(event) => setQuestion(event.target.value)}
+      />
+      <SendButton disabled={isPending || !question.trim()} />
+    </form>
   );
 }
 

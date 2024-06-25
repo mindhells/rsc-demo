@@ -12,9 +12,7 @@ export function SendButton({ disabled }: Readonly<{ disabled?: boolean }>) {
       aria-label="Send"
       disabled={disabled}
     >
-      <div className={styles[`${COMPONENT_NAME}__icon`]}>
-        <SendIcon />
-      </div>
+      <SendIcon className={styles[`${COMPONENT_NAME}__icon`]} />
     </button>
   );
 }
