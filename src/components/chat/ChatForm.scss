@@ -1,18 +1,12 @@
-$chat-form-margin: 16px;
-
 .chat-form {
-  &__form {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: $chat-form-margin;
-    width: calc(100% - ($chat-form-margin * 2));
-    height: 56px;
-  }
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 
   &__input {
     flex: 1 1 0;
-    height: 100%;
+    height: var(--chat-input-height);
     padding-inline-start: var(--spacing-5);
     padding-inline-end: var(--spacing-14);
     border: 1px solid var(--color-border);

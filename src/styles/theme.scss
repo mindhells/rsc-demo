@@ -1,2 +1,11 @@
-@forward './chat/defaults';
+// Configurations
+// CSS Custom Properties can't be used in media query declarations, so we need
+// to use Sass variables instead.
+@forward './config/breakpoints';
+
+// Mixins
 @forward './tools/mixins/pseudo-states';
+@forward './tools/mixins/button-base';
+
+// Components
+@forward './chat/defaults';

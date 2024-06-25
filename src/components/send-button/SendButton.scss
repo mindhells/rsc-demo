@@ -2,19 +2,16 @@ $send-button-size: 48px;
 $send-button-icon-size: calc($send-button-size / 2);
 
 .send-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   right: var(--spacing-2);
   width: $send-button-size;
   height: $send-button-size;
-  border: none;
   border-radius: var(--border-radius-circle);
   background-color: var(--color-secondary);
   color: var(--color-white);
   transition: var(--transition-background-color);
-  cursor: pointer;
+  
+  @include theme.button-base;
 
   &:hover {
     background-color: var(--color-secondary-dark);

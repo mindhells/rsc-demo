@@ -1,7 +1,7 @@
 // TODO: translate CSS Custom Properties below to Sass variables in Wasapi
 :root {
   // to _borders.scss
-  --border-radius: 32px;
+  --border-radius: 16px;
   --border-radius-circle: 50%;
 
   // to _colors.scss
@@ -51,5 +51,9 @@
   --transition-background-color: background-color 0.25s ease;
 
   // to _theme.scss
-  --chat-width: 480px;
+  --chat-gap: 16px;
+  --chat-max-width: 375px;
+  --chat-height: 688px;
+  --chat-header-height: 32px;
+  --chat-input-height: 56px;
 }
